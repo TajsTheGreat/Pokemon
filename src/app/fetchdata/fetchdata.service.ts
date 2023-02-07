@@ -5,8 +5,9 @@ import { IPokemon } from './api';
 
 @Injectable()
 export class FetchDataService {
-    private _url: string = 'https://pokeapi.co/api/v2/pokemon/1/';
+    private _url: string = 'https://pokeapi.co/api/v2/pokemon/bulbasaur/';
     private headers = new HttpHeaders();
+
 
     private _http;
 
@@ -15,8 +16,8 @@ export class FetchDataService {
         this._http = http;
     }
 
-    getPokemon(): Observable<IPokemon> {
-        return this.http.get<IPokemon>(this._url)
+    getPokemon(chosenPokemon: String): Observable<IPokemon> {
+        return this.http.get<IPokemon>(this._url + chosenPokemon)
             .pipe(
                 tap(data => console.log('All: ' + JSON.stringify(data))),
                 catchError(this.handleError)
