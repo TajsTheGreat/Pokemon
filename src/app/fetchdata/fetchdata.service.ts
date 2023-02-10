@@ -5,7 +5,7 @@ import { IPokemon } from './api';
 
 @Injectable()
 export class FetchDataService {
-    private _url: string = 'https://pokeapi.co/api/v2/pokemon/bulbasaur/';
+    private _url: string = 'https://pokeapi.co/api/v2/pokemon/';
     private headers = new HttpHeaders();
 
 
