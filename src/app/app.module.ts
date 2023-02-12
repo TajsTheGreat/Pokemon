@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { FetchDataComponent } from './fetchdata/fetchdata.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PokemonbagComponent } from './pokemonbag/pokemonbag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    PokemonbagComponent
   ],
   imports: [
     BrowserModule,
