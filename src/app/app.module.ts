@@ -8,13 +8,15 @@ import { FetchDataComponent } from './fetchdata/fetchdata.component';
 import { FetchDataService } from './fetchdata/fetchdata.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonbagComponent } from './pokemonbag/pokemonbag.component';
+import { PokemonFightComponent } from './pokemon-fight/pokemon-fight.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     FetchDataComponent,
-    PokemonbagComponent
+    PokemonbagComponent,
+    PokemonFightComponent
   ],
   imports: [
     BrowserModule,
