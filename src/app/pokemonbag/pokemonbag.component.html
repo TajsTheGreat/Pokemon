@@ -3,18 +3,12 @@
 <button class="btn btn-primary" (click)="getPokemon()">Get pokemon</button>
 <p>Pokemons owned: {{pokemonsOwned.length}}</p>
 
-<!-- Loop through all the names in the array -->
+<!-- Loop through all the pokemons in array and display their name and sprite -->
 <ul>
-  <li *ngFor="let pokemon of pokemonsOwned">
-    {{pokemon.name}}
-  </li>
-</ul>
-
-<!-- Loop through all the pokemons in array and display there sprite -->
-<ul>
-  <li *ngFor="let pokemon of pokemonsOwned">
-    <img src="{{pokemon.sprites}}">
-  </li>
+    <li *ngFor="let pokemon of pokemonsOwned">
+      {{pokemon.name}}
+      <img [src]="pokemon.sprites.front_default">
+    </li>
 </ul>
 
 
