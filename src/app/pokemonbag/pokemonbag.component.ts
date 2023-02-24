@@ -28,6 +28,7 @@ export class PokemonbagComponent {
       }
     });
   }
+  
 
   getPokemon() {
     this.pokemonsOwned.push(this.pokemon);
