@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FetchDataService } from '../fetchdata/fetchdata.service';
+import { PokemonFightComponent } from '../pokemon-fight/pokemon-fight.component';
 import { IPokemon } from '../fetchdata/api';
 
 @Component({
@@ -18,6 +19,7 @@ export class PokemonbagComponent {
   public chosenPokemon: string = "";
 
   constructor(private fetchDataService: FetchDataService) {}
+  constructor(private pokemonFightComponent: PokemonFightComponent) {}
 
   getRandomPokemon() {
     this.chosenPokemon = this.pokemonlistArray[Math.floor(Math.random() * this.pokemonlistArray.length)];
@@ -27,6 +29,8 @@ export class PokemonbagComponent {
         console.log(this.pokemon.name);
       }
     });
+    // call fight function in pokemon-fight component
+    
   }
 
 
