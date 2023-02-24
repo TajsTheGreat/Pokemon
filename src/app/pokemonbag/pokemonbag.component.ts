@@ -9,7 +9,7 @@ import { IPokemon } from '../fetchdata/api';
 })
 
 export class PokemonbagComponent {
-  pokemon!: IPokemon;
+  public pokemon!: IPokemon;
 
   public pokemonsOwned: Array<IPokemon> = new Array<IPokemon>();
 
@@ -28,7 +28,7 @@ export class PokemonbagComponent {
       }
     });
   }
-  
+
 
   getPokemon() {
     this.pokemonsOwned.push(this.pokemon);

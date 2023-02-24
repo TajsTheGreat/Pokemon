@@ -24,7 +24,8 @@ import { PokemonFightComponent } from './pokemon-fight/pokemon-fight.component';
     HttpClientModule
   ],
   providers: [
-    FetchDataService
+    FetchDataService,
+    PokemonbagComponent
   ],
   bootstrap: [AppComponent]
 })
