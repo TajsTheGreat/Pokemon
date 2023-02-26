@@ -65,6 +65,8 @@ export class PokemonbagComponent {
     this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
     this.fighting = true;
     this.ownedPokemonMaxHealth = this.currentPokemon.stats[0].base_stat;
+    this.enemyPokemonMaxHealth = this.pokemon.stats[0].base_stat;
+
 
     this.currentPokemon.stats[0].base_stat *= 1.2;
     this.currentPokemon.stats[1].base_stat  *= 1.2;
@@ -76,15 +78,21 @@ export class PokemonbagComponent {
       this.pokemon.stats[0].base_stat -= this.currentPokemon.stats[1].base_stat/this.pokemon.stats[2].base_stat * 10;
         if (this.pokemon.stats[0].base_stat <= 0) {
           this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
+          this.pokemon.stats[0].base_stat = this.enemyPokemonMaxHealth;
           this.getPokemon();
+          this.getRandomPokemon();
           this.fighting = false;
         }
+
+      if (this.fighting) {
         this.currentPokemon.stats[0].base_stat -= this.pokemon.stats[1].base_stat/this.currentPokemon.stats[2].base_stat * 10;
         if (this.currentPokemon.stats[0].base_stat <= 0) {
           this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
+          this.getRandomPokemon();
           this.fighting = false; 
         }
       }
+    }
     }
 
 
