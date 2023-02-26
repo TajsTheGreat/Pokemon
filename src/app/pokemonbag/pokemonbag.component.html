@@ -14,7 +14,7 @@
     </li>
 </ul>
 
-<button *ngIf="!fighting" class="btn btn-primary" (click)="fight()">Fight</button>
+<button *ngIf="!fighting && started" class="btn btn-primary" (click)="fight()">Fight</button>
 
 <div class="pokemon-container" *ngIf="fighting">
     <!-- Shows currentPokemon when figting is true -->
