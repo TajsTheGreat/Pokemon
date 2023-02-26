@@ -19,14 +19,7 @@ export interface IPokemon {
         front_shiny: string;
         back_shiny: string;
     };
-    stats: {
-        HP: number;
-        Attack: number;
-        Defense: number;
-        "Sp. Attack": number;
-        "Sp. Defense": number;
-        Speed: number;
-    }
+    stats: any[];
     types: any[];
     weight: number;
 }
