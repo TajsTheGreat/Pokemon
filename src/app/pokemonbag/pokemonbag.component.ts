@@ -60,8 +60,6 @@ export class PokemonbagComponent {
   fight() {
     this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
     this.fighting = true;
-    // shows the pokemon that is fighting
-    this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
     // show the pokemons stats
     this.pokemon.stats.forEach(stat => {
       console.log(stat.stat.name + ": " + stat.base_stat);
