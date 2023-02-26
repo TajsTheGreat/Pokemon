@@ -55,6 +55,9 @@ export class PokemonbagComponent {
         console.log(this.pokemon.name);
         this.pokemonsOwned.push(this.pokemon);
         this.started = true;
+        this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
+
+        
       }
     });
     this.getRandomPokemon();
@@ -62,36 +65,42 @@ export class PokemonbagComponent {
 
   // makes a pokemon owned fight another pokemon
   fight() {
-    this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
     this.fighting = true;
     this.ownedPokemonMaxHealth = this.currentPokemon.stats[0].base_stat;
     this.enemyPokemonMaxHealth = this.pokemon.stats[0].base_stat;
 
 
-    this.currentPokemon.stats[0].base_stat *= 1.2;
-    this.currentPokemon.stats[1].base_stat  *= 1.2;
-    this.currentPokemon.stats[2].base_stat  *= 1.2;
     }
 
     // function that deals damage between two pokemon
     dealDamage() {
-      this.pokemon.stats[0].base_stat -= this.currentPokemon.stats[1].base_stat/this.pokemon.stats[2].base_stat * 10;
+      this.pokemon.stats[0].base_stat -= this.currentPokemon.stats[1].base_stat*1.2/this.pokemon.stats[2].base_stat * 10;
         if (this.pokemon.stats[0].base_stat <= 0) {
           this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
           this.pokemon.stats[0].base_stat = this.enemyPokemonMaxHealth;
+          
+          //loop 15 times testing
+        //  for (let i = 0; i < 15; i++) {
           this.getPokemon();
+         // }
           this.getRandomPokemon();
           this.fighting = false;
         }
 
       if (this.fighting) {
-        this.currentPokemon.stats[0].base_stat -= this.pokemon.stats[1].base_stat/this.currentPokemon.stats[2].base_stat * 10;
+        this.currentPokemon.stats[0].base_stat -= this.pokemon.stats[1].base_stat/1.166/(this.currentPokemon.stats[2].base_stat*1.2) * 10;
         if (this.currentPokemon.stats[0].base_stat <= 0) {
           this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
           this.getRandomPokemon();
           this.fighting = false; 
         }
       }
+    }
+
+    choosePokemon( pokemon: IPokemon) {
+    if (!this.fighting) {
+       this.currentPokemon = pokemon;
+    }
     }
     }
 
