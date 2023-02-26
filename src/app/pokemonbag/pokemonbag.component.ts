@@ -18,6 +18,7 @@ export class PokemonbagComponent {
   private chosenPokemon: string = "";
   public currentPokemon!: IPokemon;
   public fighting = false;
+  public started = false;
 
   constructor(private fetchDataService: FetchDataService) {}
 
@@ -42,8 +43,22 @@ export class PokemonbagComponent {
     return this.pokemon.name;
   }
 
+  // Makes start pokemon
+  startPokemon() {
+    this.chosenPokemon = this.pokemonlistArray[Math.floor(Math.random() * this.pokemonlistArray.length)];
+    this.fetchDataService.getPokemon(this.chosenPokemon).subscribe({
+      next: pokemon => {
+        this.pokemon = pokemon;
+        console.log(this.pokemon.name);
+        this.pokemonsOwned.push(this.pokemon);
+        this.started = true;
+      }
+    });
+  }
+
   // makes a pokemon owned fight another pokemon
   fight() {
+    this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
     this.fighting = true;
     // shows the pokemon that is fighting
     this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
