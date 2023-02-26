@@ -60,23 +60,23 @@ export class PokemonbagComponent {
   // makes a pokemon owned fight another pokemon
   fight() {
     this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
-    this.ownedPokemonMaxHealth = this.currentPokemon.stats[0];
-    this.currentPokemon.stats[0] *= 1.2;
-    this.currentPokemon.stats[1] *= 1.2;
-    this.currentPokemon.stats[2] *= 1.2;
+    this.ownedPokemonMaxHealth = this.currentPokemon.stats.HP;
+    this.currentPokemon.stats.HP = this.currentPokemon.stats.HP * 1.2;
+    this.currentPokemon.stats.Attack = this.currentPokemon.stats.Attack * 1.2;
+    this.currentPokemon.stats.Defense = this.currentPokemon.stats.Defense * 1.2;
     this.fighting = true;
     
    
-      while (this.currentPokemon.stats[0] > 0) {
-        this.pokemon.stats[0] -= this.currentPokemon.stats[1]/this.pokemon.stats[2] * 10;
-        this.currentPokemon.stats[0] -= this.pokemon.stats[1]/this.currentPokemon.stats[2] * 10;
-        if (this.pokemon.stats[0] <= 0) {
+      while (this.currentPokemon.stats.HP > 0) {
+        this.pokemon.stats.HP -= this.currentPokemon.stats.Attack/this.pokemon.stats.Defense * 10;
+        this.currentPokemon.stats.HP -= this.pokemon.stats.Attack/this.currentPokemon.stats.Defense * 10;
+        if (this.pokemon.stats.HP <= 0) {
           this.getPokemon();
           this.fighting = false;
           break;
         }
-        if (this.currentPokemon.stats[0] <= 0) {
-          this.currentPokemon.stats[0] = this.ownedPokemonMaxHealth;
+        if (this.currentPokemon.stats.HP <= 0) {
+          this.currentPokemon.stats.HP = this.ownedPokemonMaxHealth;
           this.fighting = false; 
           break;
         }
