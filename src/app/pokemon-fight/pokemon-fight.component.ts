@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IPokemon } from '../fetchdata/api';
 import { PokemonbagComponent } from '../pokemonbag/pokemonbag.component';
 
 @Component({
@@ -8,10 +9,13 @@ import { PokemonbagComponent } from '../pokemonbag/pokemonbag.component';
 })
 export class PokemonFightComponent {
 
+  pokemon!: IPokemon | undefined;
+
  constructor(private pokemonbag: PokemonbagComponent) {}
   
   fight() {
     console.log("fight");
-    
+
+    console.log(this.pokemonbag.getPokemonName());
   }
 }
