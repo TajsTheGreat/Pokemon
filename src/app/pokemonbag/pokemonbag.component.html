@@ -23,13 +23,14 @@
   
     <!-- Shows the stats of currentPokemon -->
     <p>Stats:</p>
-    <p>HP: {{HP}}</p>
-    <p>Attack: {{attack}}</p>
-    <p>Defense: {{defense}}</p>
-    <p>Special Attack: {{specialAttack}}</p>
-    <p>Special Defense: {{specialDefense}}</p>
-    <p>Speed: {{speed}}</p>
-</div>
+    <p>HP: {{currentPokemon.stats[0].base_stat}}</p>
+    <p>Attack: {{currentPokemon.stats[1].base_stat}}</p>
+    <p>Defense: {{currentPokemon.stats[2].base_stat}}</p>
+    <p>Special Attack: {{currentPokemon.stats[3].base_stat}}</p>
+    <p>Special Defense: {{currentPokemon.stats[4].base_stat}}</p>
+    <p>Speed: {{currentPokemon.stats[5].base_stat}}
+
+  </div>
 
 <!-- Shows currentPokemon when figting is true -->
 <div *ngIf="fighting" class="pokemon-box">
@@ -38,10 +39,14 @@
 
   <!-- Shows the stats of currentPokemon -->
   <p>Stats:</p>
-  <p>HP: {{enemyHP}}</p>
-  <p>Attack: {{enemyAttack}}</p>
-  <p>Defense: {{enemyDefense}}</p>
-  <p>Special Attack: {{enemySpecialAttack}}</p>
-  <p>Special Defense: {{enemySpecialDefense}}</p>
-  <p>Speed: {{enemySpeed}}</p>
+  <p>HP: {{pokemon.stats[0].base_stat}}</p>
+  <p>Attack: {{pokemon.stats[1].base_stat}}</p>
+  <p>Defense: {{pokemon.stats[2].base_stat}}</p>
+  <p>Special Attack: {{pokemon.stats[3].base_stat}}</p>
+  <p>Special Defense: {{pokemon.stats[4].base_stat}}</p>
+  <p>Speed: {{pokemon.stats[5].base_stat}}
+
+
+
+
 </div>

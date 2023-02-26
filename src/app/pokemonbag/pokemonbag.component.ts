@@ -19,20 +19,8 @@ export class PokemonbagComponent {
   public currentPokemon!: IPokemon;
   public fighting = false;
   public started = false;
-
-  public HP!: number;
-  public attack!: number;
-  public defense!: number;
-  public speed!: number;
-  public specialAttack!: number;
-  public specialDefense!: number;
-
-  public enemyHP!: number;
-  public enemyAttack!: number;
-  public enemyDefense!: number;
-  public enemySpeed!: number;
-  public enemySpecialAttack!: number;
-  public enemySpecialDefense!: number;
+  public ownedPokemonMaxHealth!: number;
+  
 
   constructor(private fetchDataService: FetchDataService) {}
 
@@ -73,37 +61,24 @@ export class PokemonbagComponent {
   // makes a pokemon owned fight another pokemon
   fight() {
     this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
+    this.ownedPokemonMaxHealth = this.currentPokemon.stats[0];
 
-    this.HP = parseInt(this.currentPokemon.stats[0]);
-    this.attack = Number(this.currentPokemon.stats[1]);
-    this.defense = Number(this.currentPokemon.stats[2]);
-    this.specialAttack = Number(this.currentPokemon.stats[3]);
-    this.specialDefense = Number(this.currentPokemon.stats[4]);
-    this.speed = Number(this.currentPokemon.stats[5]);
-
-    this.enemyHP = Number(this.pokemon.stats[0]);
-    this.enemyAttack = Number(this.pokemon.stats[1]);
-    this.enemyDefense = Number(this.pokemon.stats[2]);
-    this.enemySpecialAttack = Number(this.pokemon.stats[3]);
-    this.enemySpecialDefense = Number(this.pokemon.stats[4]);
-    this.enemySpeed = Number(this.pokemon.stats[5]);
-
-    this.HP = Math.floor(this.HP * 1.2);
-    this.attack = Math.floor(this.attack * 1.2);
-    this.defense = Math.floor(this.defense * 1.2);
+    this.currentPokemon.stats[0].base_stat *= 1.2;
+    this.currentPokemon.stats[1].base_stat  *= 1.2;
+    this.currentPokemon.stats[2].base_stat  *= 1.2;
     this.fighting = true;
     
    
       while (this.currentPokemon.stats[0] > 0) {
-        this.enemyHP -= this.attack/this.enemyDefense * 10;
-        this.HP -= this.enemyAttack/this.defense * 10;
-        if (this.enemyHP <= 0) {
+        this.pokemon.stats[0] -= this.currentPokemon.stats[1]/this.pokemon.stats[2] * 10;
+        this.currentPokemon.stats[0] -= this.pokemon.stats[1]/this.currentPokemon.stats[2] * 10;
+        if (this.pokemon.stats[0] <= 0) {
           this.getPokemon();
           this.fighting = false;
           break;
         }
-        if (this.HP <= 0) {
-          this.HP = this.currentPokemon.stats[0];
+        if (this.currentPokemon.stats[0] <= 0) {
+          this.currentPokemon.stats[0] = this.ownedPokemonMaxHealth;
           this.fighting = false; 
           break;
         }
