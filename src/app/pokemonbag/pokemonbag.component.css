@@ -9,8 +9,22 @@
     text-align: center;
 }
 
+/* Makes a default list style */
+.pokemon-box ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
 /* Makes a default sprite size */
 .sprite {
+    width: 200px;
+    height: 200px;
+}
+
+/* Makes a default stat size */
+.stat {
     width: 200px;
     height: 200px;
 }
