@@ -4,10 +4,12 @@
 <!-- Shows start button when started is false -->
 <button *ngIf="!started" class="btn btn-primary" (click)="startPokemon()">Start</button>
 
+<button *ngIf="started" class="btn btn-primary" (click)="showPokemonBag()">Pokemons owned</button>
 <p>Pokemons owned: {{pokemonsOwned.length}}</p>
 
+
 <!-- Loop through all the pokemons in array and display their name and sprite -->
-<ul>
+<ul *ngIf="showList" class="owned-pokemon-box">
     <li *ngFor="let pokemon of pokemonsOwned">
       {{pokemon.name}}
       <img [src]="pokemon.sprites.front_default">

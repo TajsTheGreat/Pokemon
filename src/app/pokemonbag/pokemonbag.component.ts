@@ -19,6 +19,7 @@ export class PokemonbagComponent {
   public currentPokemon!: IPokemon;
   public fighting = false;
   public started = false;
+  public showList = false;
   public ownedPokemonMaxHealth!: number;
   public enemyPokemonMaxHealth!: number;
   
@@ -71,29 +72,34 @@ export class PokemonbagComponent {
     this.currentPokemon.stats[0].base_stat *= 1.2;
     this.currentPokemon.stats[1].base_stat  *= 1.2;
     this.currentPokemon.stats[2].base_stat  *= 1.2;
-    }
+  }
 
-    // function that deals damage between two pokemon
-    dealDamage() {
-      this.pokemon.stats[0].base_stat -= this.currentPokemon.stats[1].base_stat/this.pokemon.stats[2].base_stat * 10;
-        if (this.pokemon.stats[0].base_stat <= 0) {
-          this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
-          this.pokemon.stats[0].base_stat = this.enemyPokemonMaxHealth;
-          this.getPokemon();
-          this.getRandomPokemon();
-          this.fighting = false;
-        }
+  // function that deals damage between two pokemon
+  dealDamage() {
+    this.pokemon.stats[0].base_stat -= this.currentPokemon.stats[1].base_stat/this.pokemon.stats[2].base_stat * 10;
+      if (this.pokemon.stats[0].base_stat <= 0) {
+        this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
+        this.pokemon.stats[0].base_stat = this.enemyPokemonMaxHealth;
+        this.getPokemon();
+        this.getRandomPokemon();
+        this.fighting = false;
+      }
 
-      if (this.fighting) {
-        this.currentPokemon.stats[0].base_stat -= this.pokemon.stats[1].base_stat/this.currentPokemon.stats[2].base_stat * 10;
-        if (this.currentPokemon.stats[0].base_stat <= 0) {
-          this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
-          this.getRandomPokemon();
-          this.fighting = false; 
-        }
+    if (this.fighting) {
+      this.currentPokemon.stats[0].base_stat -= this.pokemon.stats[1].base_stat/this.currentPokemon.stats[2].base_stat * 10;
+      if (this.currentPokemon.stats[0].base_stat <= 0) {
+        this.currentPokemon.stats[0].base_stat = this.ownedPokemonMaxHealth;
+        this.getRandomPokemon();
+        this.fighting = false; 
       }
     }
-    }
+  }
+
+  // function that shows and hides the pokemon bag
+  showPokemonBag() {
+    this.showList = !this.showList;
+  }
+}
 
 
    
