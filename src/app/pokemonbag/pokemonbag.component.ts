@@ -89,6 +89,19 @@ export class PokemonbagComponent {
 
     }
 
+    // function that deals damage between two pokemon
+    dealDamage() {
+      this.pokemon.stats[0] -= this.currentPokemon.stats[1]/this.pokemon.stats[2] * 10;
+      this.currentPokemon.stats[0] -= this.pokemon.stats[1]/this.currentPokemon.stats[2] * 10;
+      if (this.pokemon.stats[0] <= 0) {
+        this.getPokemon();
+        this.fighting = false;
+      }
+      if (this.currentPokemon.stats[0] <= 0) {
+        this.currentPokemon.stats[0] = this.ownedPokemonMaxHealth;
+        this.fighting = false; 
+      }
+    }
 
 
    
