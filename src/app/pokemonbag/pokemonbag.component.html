@@ -19,7 +19,7 @@
 <!-- Shows currentPokemon when figting is true -->
 <div *ngIf="fighting" class="pokemon-box">
   <p>Current pokemon: {{currentPokemon.name}}</p>
-  <img [src]="currentPokemon.sprites.front_default">
+  <img [src]="currentPokemon.sprites.front_default" class="sprite">
 
   <!-- Shows the stats of currentPokemon -->
   <p>Stats:</p>

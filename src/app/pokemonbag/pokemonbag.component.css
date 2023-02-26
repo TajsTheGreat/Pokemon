@@ -8,3 +8,9 @@
     padding: 5px;
     text-align: center;
 }
+
+/* Makes a default sprite size */
+.sprite {
+    width: 200px;
+    height: 200px;
+}
