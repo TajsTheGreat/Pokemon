@@ -1,5 +1,5 @@
 <p>Click an owned pokemon to view its stats and select it for battle!</p>
-<button class="btn btn-primary" *ngIf="started"(click)="getRandomPokemon()">Random pokemon</button>
+<button class="btn btn-primary" *ngIf="fighting"(click)="getRandomPokemon()">Random pokemon</button>
 
 <!-- Shows start button when started is false -->
 <button *ngIf="!started" class="btn btn-primary" (click)="startPokemon()">Start</button>
