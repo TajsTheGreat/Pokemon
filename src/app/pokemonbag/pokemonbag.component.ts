@@ -19,6 +19,7 @@ export class PokemonbagComponent {
   public currentPokemon!: IPokemon;
   public fighting = false;
   public started = false;
+  public pokemonMaxHealth!: number;
 
   constructor(private fetchDataService: FetchDataService) {}
 
@@ -59,11 +60,39 @@ export class PokemonbagComponent {
   // makes a pokemon owned fight another pokemon
   fight() {
     this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
+    this.pokemonMaxHealth = this.currentPokemon.stats[0];
+    this.currentPokemon.stats[0] *= 1.2;
+    this.currentPokemon.stats[1] *= 1.2;
+    this.currentPokemon.stats[2] *= 1.2;
     this.fighting = true;
-    // show the pokemons stats
-    this.pokemon.stats.forEach(stat => {
-      console.log(stat.stat.name + ": " + stat.base_stat);
-    }, this);
+    
+   
+      while (this.currentPokemon.stats[0] > 0) {
+        this.pokemon.stats[0] -= this.currentPokemon.stats[1]/this.pokemon.stats[2];
+        this.currentPokemon.stats[0] -= this.pokemon.stats[1]/this.currentPokemon.stats[2];
+        if (this.pokemon.stats[0] <= 0) {
+          this.getPokemon();
+          this.fighting = false;
+          break;
+        }
+        if (this.currentPokemon.stats[0] <= 0) {
+          this.currentPokemon.stats[0] = this.pokemonMaxHealth;
+          this.fighting = false; 
+          break;
+        }
+      } 
+
+    }
+
+
+
+   
+
+    
+    
+
+    
+    
   
 
 
@@ -74,4 +103,4 @@ export class PokemonbagComponent {
     
     
   }
-}
+
