@@ -64,8 +64,8 @@ export class PokemonbagComponent {
     this.ownedPokemonMaxHealth = this.currentPokemon.stats[0];
 
     this.currentPokemon.stats[0].base_stat *= 1.2;
-    this.currentPokemon.stats[1].base_stat  *= 1.2;
-    this.currentPokemon.stats[2].base_stat  *= 1.2;
+    this.currentPokemon.stats[1].base_stat *= 1.2;
+    this.currentPokemon.stats[2].base_stat *= 1.2;
     this.fighting = true;
     
    
