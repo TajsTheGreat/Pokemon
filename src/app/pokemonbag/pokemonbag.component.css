@@ -22,3 +22,15 @@
     width: 200px;
     height: 200px;
 }
+
+.vs-box {
+    font-size: 2em;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.pokemon-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
