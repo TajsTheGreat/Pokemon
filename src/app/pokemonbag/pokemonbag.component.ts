@@ -80,9 +80,9 @@ export class PokemonbagComponent {
           this.pokemon.stats[0].base_stat = this.enemyPokemonMaxHealth;
           
           //loop 15 times testing
-        //  for (let i = 0; i < 15; i++) {
+          //for (let i = 0; i < 15; i++) {
           this.getPokemon();
-         // }
+        //  }
           this.getRandomPokemon();
           this.fighting = false;
         }

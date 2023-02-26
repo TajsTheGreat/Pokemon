@@ -35,7 +35,14 @@
     align-items: center;
 }
 
+.pokemon-container-top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position:relative; top: -200px;
+    z-index: -1;
+}
+
 .horizontal {
     display: inline;
 }
-

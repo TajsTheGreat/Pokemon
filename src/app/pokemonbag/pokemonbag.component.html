@@ -1,9 +1,10 @@
-<p>Click an owned pokemon to select for battle!</p>
-<button class="btn btn-primary" (click)="getRandomPokemon()">Random pokemon</button>
+<p>Click an owned pokemon to view its stats and select it for battle!</p>
+<button class="btn btn-primary" *ngIf="started"(click)="getRandomPokemon()">Random pokemon</button>
 
 <!-- Shows start button when started is false -->
 <button *ngIf="!started" class="btn btn-primary" (click)="startPokemon()">Start</button>
 
+<div *ngIf="!fighting && started">
 <p>Pokemons owned: {{pokemonsOwned.length}}</p>
 
 <!-- Loop through all the pokemons in array and display their name and sprite -->
@@ -14,7 +15,7 @@
     <img [src]="pokemon.sprites.front_default" (click)="choosePokemon(pokemon)">
   </li>
 </ul>
-
+</div>
 
 
 <button *ngIf="!fighting && started" class="btn btn-primary" (click)="fight()">Fight with {{currentPokemon.name}}</button>
