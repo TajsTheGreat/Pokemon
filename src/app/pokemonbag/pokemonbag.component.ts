@@ -44,8 +44,8 @@ export class PokemonbagComponent {
 
   // makes a pokemon owned fight another pokemon
   fight() {
+    this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
     this.fighting = true;
     // shows the pokemon that is fighting
-    this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
   }
 }
