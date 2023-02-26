@@ -21,3 +21,13 @@
   <p>Current pokemon: {{currentPokemon.name}}</p>
   <img [src]="currentPokemon.sprites.front_default">
 </div>
+
+<!-- Shows the stats of currentPokemon -->
+<div *ngIf="fighting">
+  <p>Stats:</p>
+  <ul>
+    <li *ngFor="let stat of currentPokemon.stats">
+      {{stat.stat.name}}: {{stat.base_stat}}
+    </li>
+  </ul>
+</div>
