@@ -16,6 +16,6 @@ export class PokemonFightComponent {
   fight() {
     console.log("fight");
 
-    console.log(this.pokemonbag.getPokemonName());
+    this.pokemonbag.getPokemonName();
   }
 }
