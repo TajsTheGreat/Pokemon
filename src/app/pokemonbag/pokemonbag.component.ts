@@ -19,7 +19,7 @@ export class PokemonbagComponent {
   public currentPokemon!: IPokemon;
   public fighting = false;
   public started = false;
-  public pokemonMaxHealth!: number;
+  public ownedPokemonMaxHealth!: number;
 
   constructor(private fetchDataService: FetchDataService) {}
 
@@ -60,7 +60,7 @@ export class PokemonbagComponent {
   // makes a pokemon owned fight another pokemon
   fight() {
     this.currentPokemon = this.pokemonsOwned[this.pokemonsOwned.length - 1];
-    this.pokemonMaxHealth = this.currentPokemon.stats[0];
+    this.ownedPokemonMaxHealth = this.currentPokemon.stats[0];
     this.currentPokemon.stats[0] *= 1.2;
     this.currentPokemon.stats[1] *= 1.2;
     this.currentPokemon.stats[2] *= 1.2;
@@ -68,19 +68,20 @@ export class PokemonbagComponent {
     
    
       while (this.currentPokemon.stats[0] > 0) {
-        this.pokemon.stats[0] -= this.currentPokemon.stats[1]/this.pokemon.stats[2];
-        this.currentPokemon.stats[0] -= this.pokemon.stats[1]/this.currentPokemon.stats[2];
+        this.pokemon.stats[0] -= this.currentPokemon.stats[1]/this.pokemon.stats[2] * 10;
+        this.currentPokemon.stats[0] -= this.pokemon.stats[1]/this.currentPokemon.stats[2] * 10;
         if (this.pokemon.stats[0] <= 0) {
           this.getPokemon();
           this.fighting = false;
           break;
         }
         if (this.currentPokemon.stats[0] <= 0) {
-          this.currentPokemon.stats[0] = this.pokemonMaxHealth;
+          this.currentPokemon.stats[0] = this.ownedPokemonMaxHealth;
           this.fighting = false; 
           break;
         }
       } 
+      
 
     }
 
