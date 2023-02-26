@@ -1,0 +1,10 @@
+/* Makes a box that shows sprite and stats of a pokemon */
+.pokemon-box {
+    display: inline-block;
+    width: 250px;
+    height: 500px;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}

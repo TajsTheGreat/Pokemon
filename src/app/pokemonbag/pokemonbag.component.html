@@ -14,16 +14,14 @@
     </li>
 </ul>
 
-<button class="btn btn-primary" (click)="fight()">Fight</button>
+<button *ngIf="!fighting" class="btn btn-primary" (click)="fight()">Fight</button>
 
 <!-- Shows currentPokemon when figting is true -->
-<div *ngIf="fighting">
+<div *ngIf="fighting" class="pokemon-box">
   <p>Current pokemon: {{currentPokemon.name}}</p>
   <img [src]="currentPokemon.sprites.front_default">
-</div>
 
-<!-- Shows the stats of currentPokemon -->
-<div *ngIf="fighting">
+  <!-- Shows the stats of currentPokemon -->
   <p>Stats:</p>
   <ul>
     <li *ngFor="let stat of currentPokemon.stats">
