@@ -55,6 +55,7 @@ export class PokemonbagComponent {
         this.started = true;
       }
     });
+    this.getRandomPokemon();
   }
 
   // makes a pokemon owned fight another pokemon
